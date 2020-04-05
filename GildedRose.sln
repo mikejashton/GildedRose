@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "GildedRose\GildedRose.csproj", "{EEB6CC30-629D-4B88-A07A-37DF793E86F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRose_Tests", "GuildedRose_Tests\GuildedRose_Tests.csproj", "{85356AF6-E97E-4F0F-BA31-9CA4B18F404A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose_Tests", "GildedRose_Tests\GildedRose_Tests.csproj", "{85356AF6-E97E-4F0F-BA31-9CA4B18F404A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
