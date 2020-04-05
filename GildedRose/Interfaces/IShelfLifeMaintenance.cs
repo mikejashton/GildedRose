@@ -8,6 +8,6 @@
         /// <summary>
         /// Allows the sell-by metric to be modified
         /// </summary>
-        public int SellIn { set; }
+        public int SellIn { get; set; }
     }
 }

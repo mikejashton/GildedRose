@@ -8,6 +8,6 @@
         /// <summary>
         /// Allows the quality score to be modified
         /// </summary>
-        public int Quality {set; }
+        public int Quality { get; set;}
     }
 }
