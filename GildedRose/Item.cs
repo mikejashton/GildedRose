@@ -5,7 +5,7 @@ namespace GildedRose
     /// <summary>
     /// Represents an item of stock
     /// </summary>
-    public class Item : IInventoryItem
+    public class Item : IInventoryItem, IQualityMaintenance
     {
         /// <summary>
         /// The name of this item
