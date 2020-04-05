@@ -2,7 +2,7 @@ using GildedRose;
 using GildedRose.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GuildedRose_Tests
+namespace GildedRose_Tests
 {
     [TestClass]
     public class ItemTests
@@ -14,19 +14,14 @@ namespace GuildedRose_Tests
         public void Success_ItemMaintainedValue()
         {
             // Setup
-            var newItem = new Item()
-            {
-                Name = "Some Stock Item",
-                Quality = 4,
-                SellBy = -3
-            } as IInventoryItem;
+            var newItem = new Item( "Some Stock Item", -3, 4) as IInventoryItem;
 
             var qualityMaintainer = (IQualityMaintenance)newItem;
             
             //  Assert
             Assert.AreEqual("Some Stock Item", newItem.Name);
             Assert.AreEqual(4, newItem.Quality);
-            Assert.AreEqual(-3, newItem.SellBy);
+            Assert.AreEqual(-3, newItem.SellIn);
         }
 
         /// <summary>
@@ -37,12 +32,7 @@ namespace GuildedRose_Tests
         public void Success_QualityMaintainerUpdatesValues()
         {
             // Setup
-            var newItem = new Item()
-            {
-                Name = "Some Stock Item",
-                Quality = 4,
-                SellBy = -3
-            } as IInventoryItem;
+            var newItem = new Item( "Some Stock Item", -3, 4) as IInventoryItem;
             var qualityMaintainer = (IQualityMaintenance)newItem;
             
             // Execution
@@ -52,7 +42,7 @@ namespace GuildedRose_Tests
             //  Assert
             Assert.AreEqual("Some Stock Item", newItem.Name);
             Assert.AreEqual(109, newItem.Quality);
-            Assert.AreEqual(-3, newItem.SellBy);
+            Assert.AreEqual(-3, newItem.SellIn);
         }
         
         /// <summary>
@@ -63,22 +53,17 @@ namespace GuildedRose_Tests
         public void Success_ShelfLifeMaintainerUpdatesValues()
         {
             // Setup
-            var newItem = new Item()
-            {
-                Name = "Some Stock Item",
-                Quality = 4,
-                SellBy = -3
-            } as IInventoryItem;
+            var newItem = new Item( "Some Stock Item", -3, 4) as IInventoryItem;
             var qualityMaintainer = (IShelfLifeMaintenance)newItem;
             
             // Execution
             // Update the quality, ensure that all other members are untouched
-            qualityMaintainer.SellBy = 33;
+            qualityMaintainer.SellIn = 33;
 
             //  Assert
             Assert.AreEqual("Some Stock Item", newItem.Name);
             Assert.AreEqual(4, newItem.Quality);
-            Assert.AreEqual(33, newItem.SellBy);
+            Assert.AreEqual(33, newItem.SellIn);
         }
     }
 }

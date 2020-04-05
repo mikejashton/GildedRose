@@ -18,6 +18,6 @@
         /// <summary>
         /// The number of days until the item should be sold
         /// </summary>
-        int SellBy { get; }
+        int SellIn { get; }
     }
 }
