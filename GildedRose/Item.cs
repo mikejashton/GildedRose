@@ -5,7 +5,7 @@ namespace GildedRose
     /// <summary>
     /// Represents an item of stock
     /// </summary>
-    public class Item : IInventoryItem, IQualityMaintenance
+    public class Item : IInventoryItem, IQualityMaintenance, IShelfLifeMaintenance
     {
         /// <summary>
         /// The name of this item
@@ -18,7 +18,7 @@ namespace GildedRose
         public int Quality { get; set; }
 
         /// <summary>
-        /// The sell-by date for this item. This represents the number of days until the item must be sold.
+        /// The sell by metric for this item
         /// </summary>
         public int SellBy { get; set; }
     }
