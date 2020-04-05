@@ -65,7 +65,7 @@
         /// <summary>
         /// The sell by strategy applied to the item 
         /// </summary>
-        SellByStrategy SalesStrategy { get;  }
+        SellByStrategy SellByStrategy { get;  }
         
         /// <summary>
         /// A measure of the quality of the item. This value may change as the item ages

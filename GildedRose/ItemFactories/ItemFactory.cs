@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
+using GildedRose.Exceptions;
 using GildedRose.Interfaces;
 
 namespace GildedRose.ItemFactories
@@ -26,12 +25,12 @@ namespace GildedRose.ItemFactories
         /// <summary>
         /// The quality strategy applied to the item
         /// </summary>
-        public QualityStrategy QualityStrategy { get; set; }
+        public QualityStrategy QualityStrategy { get; }
         
         /// <summary>
         /// The sell by strategy applied to the item 
         /// </summary>
-        public SellByStrategy SellByStrategy { get; set; }
+        public SellByStrategy SellByStrategy { get; }
     }
     
     /// <summary>
@@ -59,6 +58,8 @@ namespace GildedRose.ItemFactories
         /// <param name="sellIn">The number of days before the item must be sold</param>
         /// <param name="quality">The item's quality metric</param>
         /// <exception cref="ArgumentNullException">Thrown when a parameter is invalid</exception>
+        /// <exception cref="InvalidStockObjectNameException">Thrown if the <c>name</c> argument does not exist in the
+        /// stock management configuration</exception>
         /// <returns>A newly constructed inventory item</returns>
         public IInventoryItem Create(string name, int sellIn, int quality)
         {
@@ -66,8 +67,24 @@ namespace GildedRose.ItemFactories
             {
                 throw new ArgumentNullException( nameof( name ));
             }
+
+            // Find the correct stock management strategy in the dictionary provided. A failure to find an option
+            // will result in an exception
+            var result = _stockManagementConfig.Where(pair =>
+                string.Equals(pair.Key, name, StringComparison.CurrentCultureIgnoreCase))
+                .Select( x => x.Value ).ToList();
             
-            return new Item( name, sellIn, quality );
+            // Handle the error cases and let the success case fall through
+            if (result.Count == 0)
+            {
+                throw new InvalidStockObjectNameException(name);
+            }
+            
+            // Extract the values and then construct our item
+            var qualityMetric = result[0].QualityStrategy;
+            var sellByStrategy  = result[0].SellByStrategy;
+
+            return new Item(name, sellIn, quality, qualityMetric, sellByStrategy);
         }
     }
 }
