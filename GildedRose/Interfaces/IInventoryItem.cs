@@ -1,6 +1,53 @@
 ﻿namespace GildedRose.Interfaces
 {
     /// <summary>
+    /// Represents the quality strategy to be applied
+    /// </summary>
+    public enum QualityStrategy
+    {
+        /// <summary>
+        /// Maintains a constant value 
+        /// </summary>
+        Stable = 0,
+        
+        /// <summary>
+        /// Decreases the quality score by one each day
+        /// </summary>
+        LinearDecrease = 1,
+        
+        /// <summary>
+        /// Increases the quality score by one each day
+        /// </summary>
+        LinearIncrease = 2,
+        
+        /// <summary>
+        /// Increases the quality score by two each day
+        /// </summary>
+        RapidDecrease = 3
+    }
+
+    /// <summary>
+    /// Represents the sell-by strategy to be applied 
+    /// </summary>
+    public enum SellByStrategy
+    {
+        /// <summary>
+        /// Maintains a constant value 
+        /// </summary>
+        Stable = 0,
+        
+        /// <summary>
+        /// Decreases the sell by score by one each day
+        /// </summary>
+        LinearDecrease = 1,
+        
+        /// <summary>
+        /// Increases the sell by score by one each day
+        /// </summary>
+        LinearIncrease = 2,
+    }
+    
+    /// <summary>
     /// Represents an item of inventory
     /// </summary>
     public interface IInventoryItem
@@ -9,6 +56,16 @@
         /// The name of the item
         /// </summary>
         string Name { get; }
+        
+        /// <summary>
+        /// The quality strategy applied to the item
+        /// </summary>
+        QualityStrategy QualityStrategy { get; }
+        
+        /// <summary>
+        /// The sell by strategy applied to the item 
+        /// </summary>
+        SellByStrategy SalesStrategy { get;  }
         
         /// <summary>
         /// A measure of the quality of the item. This value may change as the item ages

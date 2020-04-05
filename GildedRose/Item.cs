@@ -24,7 +24,17 @@ namespace GildedRose
         /// The name of this item
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// The quality strategy applied to the item
+        /// </summary>
+        public QualityStrategy QualityStrategy { get; }
         
+        /// <summary>
+        /// The sell by strategy applied to the item 
+        /// </summary>
+        public SellByStrategy SalesStrategy { get;  }
+
         /// <summary>
         /// The quality score associated with it. 
         /// </summary>
