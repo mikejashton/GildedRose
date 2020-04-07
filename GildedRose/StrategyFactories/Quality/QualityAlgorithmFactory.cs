@@ -44,6 +44,7 @@ namespace GildedRose.StrategyFactories.Quality
             catch (InvalidCastException)
             {
                 // This means the type specified in the lookup list is not compatible with our return type
+                // TODO: This should really be a custom exception type
                 throw new GildedRoseException( $"The lookup list item relating to '{strategyType}' was not compatible" +
                                                $"with the IQualityAlgorithm return type.");
             }
