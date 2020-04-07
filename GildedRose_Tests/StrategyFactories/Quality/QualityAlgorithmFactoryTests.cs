@@ -24,7 +24,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality
     }
     
     [TestClass]
-    public class QualityStrategyFactoryTests
+    public class QualityAlgorithmFactoryTests
     {
         /// <summary>
         /// The type can be created successfully
