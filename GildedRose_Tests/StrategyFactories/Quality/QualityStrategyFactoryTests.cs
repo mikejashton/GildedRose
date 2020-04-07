@@ -11,14 +11,14 @@ namespace GildedRose_Tests.StrategyFactories.Quality
 {
     public class TestAlgorithm1 : IQualityAlgorithm
     {
-        public void Run(IQualityMaintenance qualityMaintainer)
+        public void Run(IInventoryItem item, IQualityMaintenance qualityMaintainer)
         {
         }
     }
     
     public class TestAlgorithm2 : IQualityAlgorithm
     {
-        public void Run(IQualityMaintenance qualityMaintainer)
+        public void Run(IInventoryItem item, IQualityMaintenance qualityMaintainer)
         {
         }
     }

@@ -3,9 +3,9 @@
 namespace GildedRose.StrategyFactories.Quality.Strategies
 {
     /// <summary>
-    /// Steadily decreases the quality of a product until it reaches zero
+    /// Quality decreases by twice the value of the LinearDecreaseAlgorithm
     /// </summary>
-    public class LinearDecreaseAlgorithm : IQualityAlgorithm
+    public class RapidDecreaseAlgorithm : IQualityAlgorithm
     {
         /// <summary>
         /// Runs the algorithm
@@ -18,7 +18,7 @@ namespace GildedRose.StrategyFactories.Quality.Strategies
             {
                 // I am not happy with the use of a static class here because it can hamper unit testing. This should
                 // ideally be injected
-                qualityMaintainer.Quality-= QualityAssessor.CalculateDeteriorationRate( item );
+                qualityMaintainer.Quality-= QualityAssessor.CalculateDeteriorationRate( item ) * 2;
             }
         }
     }

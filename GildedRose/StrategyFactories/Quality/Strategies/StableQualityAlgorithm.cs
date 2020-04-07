@@ -10,8 +10,9 @@ namespace GildedRose.StrategyFactories.Quality.Strategies
         /// <summary>
         /// Runs the algorithm
         /// </summary>
+        /// <param name="item">The item to be maintained</param>
         /// <param name="qualityMaintainer">The object to be maintained</param>
-        public void Run(IQualityMaintenance qualityMaintainer)
+        public void Run(IInventoryItem item, IQualityMaintenance qualityMaintainer)
         {
             // We don't do anything, because the value needs to remain stable.
         }

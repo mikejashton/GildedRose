@@ -3,9 +3,9 @@
 namespace GildedRose.StrategyFactories.Quality.Strategies
 {
     /// <summary>
-    /// Steadily decreases the quality of a product until it reaches zero
+    /// Prevents the quality from ever becoming negative
     /// </summary>
-    public class LinearDecreaseAlgorithm : IQualityAlgorithm
+    public class QualityNeverNegativeAlgorithm : IQualityAlgorithm
     {
         /// <summary>
         /// Runs the algorithm
@@ -14,11 +14,9 @@ namespace GildedRose.StrategyFactories.Quality.Strategies
         /// <param name="qualityMaintainer">The item to be maintained</param>
         public void Run(IInventoryItem item, IQualityMaintenance qualityMaintainer)
         {
-            if (qualityMaintainer.Quality > 0)
+            if (qualityMaintainer.Quality < 0)
             {
-                // I am not happy with the use of a static class here because it can hamper unit testing. This should
-                // ideally be injected
-                qualityMaintainer.Quality-= QualityAssessor.CalculateDeteriorationRate( item );
+                qualityMaintainer.Quality = 0;
             }
         }
     }

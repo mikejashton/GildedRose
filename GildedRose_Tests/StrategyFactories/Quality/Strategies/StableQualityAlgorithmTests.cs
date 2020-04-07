@@ -20,7 +20,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             var algorithm = new StableQualityAlgorithm();
             
             // Execution
-            algorithm.Run( item );
+            algorithm.Run(item, item );
             
             // Assert
             Assert.AreEqual( qualityScore, item.Quality );
