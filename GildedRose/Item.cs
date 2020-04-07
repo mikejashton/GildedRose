@@ -14,14 +14,12 @@ namespace GildedRose
         /// <param name="sellIn">The number of days remaining before the item must be sold</param>
         /// <param name="quality">The quality metric associated with the item</param>
         /// <param name="qualityStrategy">The quality strategy to be used for this object</param>
-        /// <param name="sellByStrategy">The sell by strategy to be used for this object</param>
-        internal Item(string name, int sellIn, int quality, QualityStrategy qualityStrategy, SellByStrategy sellByStrategy)
+        internal Item(string name, int sellIn, int quality, QualityStrategy qualityStrategy)
         {
             Name = name;
             SellIn = sellIn;
             Quality = quality;
             QualityStrategy = qualityStrategy;
-            SellByStrategy = sellByStrategy;
         }
         
         /// <summary>
@@ -33,11 +31,6 @@ namespace GildedRose
         /// The quality strategy applied to the item
         /// </summary>
         public QualityStrategy QualityStrategy { get; }
-        
-        /// <summary>
-        /// The sell by strategy applied to the item 
-        /// </summary>
-        public SellByStrategy SellByStrategy { get;  }
 
         /// <summary>
         /// The quality score associated with it. 

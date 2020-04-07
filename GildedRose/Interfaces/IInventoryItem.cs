@@ -27,27 +27,6 @@
     }
 
     /// <summary>
-    /// Represents the sell-by strategy to be applied 
-    /// </summary>
-    public enum SellByStrategy
-    {
-        /// <summary>
-        /// Maintains a constant value 
-        /// </summary>
-        Stable = 0,
-        
-        /// <summary>
-        /// Decreases the sell by score by one each day
-        /// </summary>
-        LinearDecrease = 1,
-        
-        /// <summary>
-        /// Increases the sell by score by one each day
-        /// </summary>
-        LinearIncrease = 2,
-    }
-    
-    /// <summary>
     /// Represents an item of inventory
     /// </summary>
     public interface IInventoryItem
@@ -61,12 +40,7 @@
         /// The quality strategy applied to the item
         /// </summary>
         QualityStrategy QualityStrategy { get; }
-        
-        /// <summary>
-        /// The sell by strategy applied to the item 
-        /// </summary>
-        SellByStrategy SellByStrategy { get;  }
-        
+
         /// <summary>
         /// A measure of the quality of the item. This value may change as the item ages
         /// </summary>

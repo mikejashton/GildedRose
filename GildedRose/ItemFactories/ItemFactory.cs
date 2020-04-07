@@ -15,22 +15,16 @@ namespace GildedRose.ItemFactories
         /// Initialises the stock management strategy
         /// </summary>
         /// <param name="qualityStrategy">The required quality strategy for this item type</param>
-        /// <param name="sellByStrategy">The required sell by  strategy for this item type</param>
-        public StockManagementStrategy(QualityStrategy qualityStrategy, SellByStrategy sellByStrategy)
+        public StockManagementStrategy( QualityStrategy qualityStrategy )
         {
             QualityStrategy = qualityStrategy;
-            SellByStrategy = sellByStrategy;
         }
         
         /// <summary>
         /// The quality strategy applied to the item
         /// </summary>
         public QualityStrategy QualityStrategy { get; }
-        
-        /// <summary>
-        /// The sell by strategy applied to the item 
-        /// </summary>
-        public SellByStrategy SellByStrategy { get; }
+
     }
     
     /// <summary>
@@ -82,9 +76,8 @@ namespace GildedRose.ItemFactories
             
             // Extract the values and then construct our item
             var qualityMetric = result[0].QualityStrategy;
-            var sellByStrategy  = result[0].SellByStrategy;
 
-            return new Item(name, sellIn, quality, qualityMetric, sellByStrategy);
+            return new Item(name, sellIn, quality, qualityMetric);
         }
     }
 }
