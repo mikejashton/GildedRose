@@ -21,7 +21,7 @@ namespace GildedRose
                 { QualityStrategy.LinearDecrease, typeof( LinearDecreaseAlgorithm ) },
                 { QualityStrategy.LinearIncrease, typeof( LinearIncreaseAlgorithm ) },
                 { QualityStrategy.RapidDecrease, typeof( RapidDecreaseAlgorithm )},
-                //{ QualityStrategy.Stable, typeof( StableQualityAlgorithm ) },
+                { QualityStrategy.IncreasingUntilSellBy, typeof( IncreasingValueUntilSellByAlgorithm ) },
             });
             
             // Creates a mapping between an item of stock and it's corresponding stock management strategy. At the
@@ -30,7 +30,7 @@ namespace GildedRose
             var itemFactory = new ItemFactory( new Dictionary<string, StockManagementStrategy>()
             {
                 { "Aged Brie", new StockManagementStrategy( QualityStrategy.LinearIncrease )},
-                { "Backstage passes", new StockManagementStrategy( QualityStrategy.Stable )}, // To do
+                { "Backstage passes", new StockManagementStrategy( QualityStrategy.IncreasingUntilSellBy )}, 
                 { "Sulfuras", new StockManagementStrategy( QualityStrategy.Stable )},
                 { "Normal Item", new StockManagementStrategy( QualityStrategy.LinearDecrease )},
                 { "Conjured", new StockManagementStrategy( QualityStrategy.RapidDecrease )}
@@ -66,11 +66,18 @@ namespace GildedRose
                 // Decrease the number days by one
                 var shelfLifeMaintainer = item as IShelfLifeMaintenance;
                 shelfLifeMaintainer.SellIn--;
-                
-                var pipeline = pipelineFactory.CreatePipeline( item );
-                foreach (var qualityAlgorithm in pipeline)
+
+                try
                 {
-                    qualityAlgorithm.Run(item, item as IQualityMaintenance );
+                    var pipeline = pipelineFactory.CreatePipeline(item);
+                    foreach (var qualityAlgorithm in pipeline)
+                    {
+                        qualityAlgorithm.Run(item, item as IQualityMaintenance);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine( $"An error has occurred processing an item. Processing will continue. Error: {ex.Message}");
                 }
             });
         }

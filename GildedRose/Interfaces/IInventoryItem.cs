@@ -23,7 +23,12 @@
         /// <summary>
         /// Increases the quality score by two each day
         /// </summary>
-        RapidDecrease = 3
+        RapidDecrease = 3,
+        
+        /// <summary>
+        /// The value increases as the sell by approaches, dropping to zero afterwards
+        /// </summary>
+        IncreasingUntilSellBy = 4
     }
 
     /// <summary>
