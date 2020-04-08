@@ -11,7 +11,10 @@ The program requires the following command line arguments:
 1. The input file name
 2. The output filename
 
-Example: GildedRose inputfilename outputfilename
+Example: GildedRose Input.txt Output.txt
+
+The Input.txt file exists at the root of the repo so the program can easily be tested. The program will automatically create
+the Output.txt file.
 
 The program will return 0 on success and any errors will be output to std out.
 
