@@ -4,7 +4,6 @@ using GildedRose;
 using GildedRose.Exceptions;
 using GildedRose.Interfaces;
 using GildedRose.StrategyFactories.Quality;
-using GildedRose.StrategyFactories.Quality.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GildedRose_Tests.StrategyFactories.Quality

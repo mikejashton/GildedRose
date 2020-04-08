@@ -17,7 +17,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 2;
-            var item = new Item( "Name", 11, qualityScore, QualityStrategy.IncreasingUntilSellBy );
+            var item = new Item( "Name", 11, qualityScore, QualityStrategy.IncreasingUntilSellBy, SellByStrategy.Stable );
             var algorithm = new IncreasingValueUntilSellByAlgorithm();
             
             // Execution
@@ -92,7 +92,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 2;
-            var item = new Item( "Name", -1, qualityScore, QualityStrategy.IncreasingUntilSellBy );
+            var item = new Item( "Name", -1, qualityScore, QualityStrategy.IncreasingUntilSellBy, SellByStrategy.Stable );
             var algorithm = new IncreasingValueUntilSellByAlgorithm();
             
             // Execution

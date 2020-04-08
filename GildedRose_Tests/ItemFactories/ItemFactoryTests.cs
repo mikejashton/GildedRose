@@ -28,11 +28,12 @@ namespace GildedRose_Tests.ItemFactories
             const int sellIn = 99;
             const int quality = 66;
             const QualityStrategy expectedQualityStrategy = QualityStrategy.LinearDecrease;
+            const SellByStrategy expectedSellByStrategy = SellByStrategy.LinearDecrease;
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "Some Other object", new StockManagementStrategy( QualityStrategy.Stable ) },
-                { "Yet another object", new StockManagementStrategy( QualityStrategy.RapidDecrease ) },
-                { objectName, new StockManagementStrategy( expectedQualityStrategy ) }, 
+                { "Some Other object", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) },
+                { "Yet another object", new StockManagementStrategy( QualityStrategy.RapidDecrease, SellByStrategy.LinearDecrease) },
+                { objectName, new StockManagementStrategy( expectedQualityStrategy, expectedSellByStrategy) }, 
             }) ;
 
             // Execution
@@ -44,6 +45,7 @@ namespace GildedRose_Tests.ItemFactories
             Assert.AreEqual(sellIn, newItem.SellIn);
             Assert.AreEqual(quality, newItem.Quality);
             Assert.AreEqual( expectedQualityStrategy, newItem.QualityStrategy );
+            Assert.AreEqual( expectedSellByStrategy, newItem.SellByStrategy );
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace GildedRose_Tests.ItemFactories
             // Setup
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "SomeObject", new StockManagementStrategy( QualityStrategy.Stable) }, 
+                { "SomeObject", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) }, 
             }) ;
             
             // Execution
@@ -70,7 +72,7 @@ namespace GildedRose_Tests.ItemFactories
             // Setup
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "This is a valid object", new StockManagementStrategy( QualityStrategy.Stable) }, 
+                { "This is a valid object", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) }, 
             }) ;
             
             // Execution

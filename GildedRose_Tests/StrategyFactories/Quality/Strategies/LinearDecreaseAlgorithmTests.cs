@@ -16,7 +16,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 2;
-            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             var algorithm = new LinearDecreaseAlgorithm();
             
             // Execution
@@ -34,7 +34,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 2;
-            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             var algorithm = new LinearDecreaseAlgorithm();
             
             // Execution
@@ -52,7 +52,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 2;
-            var item = new Item( "Name", -1, qualityScore, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", -1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             var algorithm = new LinearDecreaseAlgorithm();
             
             // Execution
@@ -70,7 +70,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 0;
-            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", 1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             var algorithm = new LinearDecreaseAlgorithm();
             
             // Execution

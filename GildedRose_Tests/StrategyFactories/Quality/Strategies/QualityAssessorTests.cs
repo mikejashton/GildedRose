@@ -17,7 +17,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             // Setup
             const int sellIn = 0;
             const int quality = 9;
-            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             
             // Execution
             var result = QualityAssessor.CalculateDeteriorationRate(item);
@@ -35,7 +35,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             // Setup
             const int sellIn = 0;
             const int quality = 9;
-            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             
             // Execution
             var result = QualityAssessor.CalculateDeteriorationRate(item);
@@ -53,7 +53,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             // Setup
             const int sellIn = -1;
             const int quality = 9;
-            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease );
+            var item = new Item( "Name", sellIn, quality, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
             
             // Execution
             var result = QualityAssessor.CalculateDeteriorationRate(item);

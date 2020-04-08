@@ -29,11 +29,11 @@ namespace GildedRose
             // contain other definitions in future.
             var itemFactory = new ItemFactory( new Dictionary<string, StockManagementStrategy>()
             {
-                { "Aged Brie", new StockManagementStrategy( QualityStrategy.LinearIncrease )},
-                { "Backstage passes", new StockManagementStrategy( QualityStrategy.IncreasingUntilSellBy )}, 
-                { "Sulfuras", new StockManagementStrategy( QualityStrategy.Stable )},
-                { "Normal Item", new StockManagementStrategy( QualityStrategy.LinearDecrease )},
-                { "Conjured", new StockManagementStrategy( QualityStrategy.RapidDecrease )}
+                { "Aged Brie", new StockManagementStrategy( QualityStrategy.LinearIncrease, SellByStrategy.LinearDecrease )},
+                { "Backstage passes", new StockManagementStrategy( QualityStrategy.IncreasingUntilSellBy, SellByStrategy.LinearDecrease )}, 
+                { "Sulfuras", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable )},
+                { "Normal Item", new StockManagementStrategy( QualityStrategy.LinearDecrease, SellByStrategy.LinearDecrease )},
+                { "Conjured", new StockManagementStrategy( QualityStrategy.RapidDecrease, SellByStrategy.LinearDecrease )}
             });
             
             // Create the list of items (this will ultimately be done in a stream)
@@ -51,7 +51,11 @@ namespace GildedRose
             };
             
             // Define a list of quality control steps that must be run every time
-            var qualityControl = new List<IQualityAlgorithm>() { new QualityNeverNegativeAlgorithm() };
+            var qualityControl = new List<IQualityAlgorithm>()
+            {
+                new QualityNeverNegativeAlgorithm(),
+                new QualityNeverAboveThresholdAlgorithm( 50 )
+            };
             
             // And now the object that creates the factory for the item.
             var pipelineFactory = new QualityPipelineFactory( qualityAlgorithmFactory, qualityControl);
@@ -74,6 +78,8 @@ namespace GildedRose
                     {
                         qualityAlgorithm.Run(item, item as IQualityMaintenance);
                     }
+                    
+                    Console.WriteLine( $"{item.Name} {item.SellIn} {item.Quality}");
                 }
                 catch (Exception ex)
                 {
