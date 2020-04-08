@@ -5,6 +5,8 @@ using GildedRose.ItemFactories;
 using GildedRose.StrategyFactories;
 using GildedRose.StrategyFactories.Quality;
 using GildedRose.StrategyFactories.Quality.Strategies;
+using GildedRose.StrategyFactories.ShelfLife;
+using GildedRose.StrategyFactories.ShelfLife.Strategies;
 
 namespace GildedRose
 {
@@ -22,6 +24,13 @@ namespace GildedRose
                 { QualityStrategy.LinearIncrease, typeof( LinearIncreaseAlgorithm ) },
                 { QualityStrategy.RapidDecrease, typeof( RapidDecreaseAlgorithm )},
                 { QualityStrategy.IncreasingUntilSellBy, typeof( IncreasingValueUntilSellByAlgorithm ) },
+            });
+            
+            // Creates a mapping between the shelf life strategy and the implementation.
+            var shelfLifeAlgorithmFactory = new ShelfLifeAlgorithmFactory( new Dictionary<SellByStrategy, Type>()
+            {
+                { SellByStrategy.Stable, typeof( StableShelfLifeAlgorithm ) },
+                { SellByStrategy.LinearDecrease, typeof( LinearDecreaseShelfLifeAlgorithm ) }
             });
             
             // Creates a mapping between an item of stock and it's corresponding stock management strategy. At the
@@ -67,14 +76,15 @@ namespace GildedRose
                     return;
                 }
                 
-                // Decrease the number days by one
-                var shelfLifeMaintainer = item as IShelfLifeMaintenance;
-                shelfLifeMaintainer.SellIn--;
-
                 try
                 {
-                    var pipeline = pipelineFactory.CreatePipeline(item);
-                    foreach (var qualityAlgorithm in pipeline)
+                    // Run the algorithm against the stock life first
+                    var stockPipeline = shelfLifeAlgorithmFactory.Create(item.SellByStrategy);
+                    stockPipeline.Run(item, item as IShelfLifeMaintenance);
+
+                    // Now run the algorithm against the quality metric
+                    var qualityPipeline = pipelineFactory.CreatePipeline(item);
+                    foreach (var qualityAlgorithm in qualityPipeline)
                     {
                         qualityAlgorithm.Run(item, item as IQualityMaintenance);
                     }

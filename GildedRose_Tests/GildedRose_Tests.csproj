@@ -18,4 +18,8 @@
       <ProjectReference Include="..\GildedRose\GildedRose.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="StrategyFactories\ShelfLife\Strategies" />
+    </ItemGroup>
+
 </Project>
