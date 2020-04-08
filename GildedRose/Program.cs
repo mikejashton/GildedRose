@@ -109,7 +109,7 @@ namespace GildedRose
                 var outputProcessor = new OutputProcessor(outputStreamWriter);
                 
                 // Run the pipeline by awaiting on the observable
-                await create_observable_stream(inputStream, stringParse, itemToInventoryParse, itemProcessor, outputProcessor);;
+                await create_observable_stream(inputStream, stringParse, itemToInventoryParse, itemProcessor, outputProcessor);
                 
                 Console.WriteLine("File processed.");
 

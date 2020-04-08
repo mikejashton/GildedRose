@@ -26,7 +26,7 @@ namespace GildedRose_Tests.Output
             const int expectedQuality = 78;
             
             
-            var result = false;
+            bool result;
             byte[] buffer;
             using (var stream = new MemoryStream())
             {

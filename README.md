@@ -45,4 +45,5 @@ I really hate how big it is right now. This would be the first thing I did if I 
 4. If this is likely to be extended further I would be nice to introduce dependency injection
 5. Make use a factory method/mock item in the unit tests to remove the allocation of Items
 6. More comments to describe the correct behaviour of the  unit tests
+7. Tidy up visibility of class members (make things internal that don't need to be public).
   

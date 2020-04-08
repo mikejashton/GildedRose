@@ -1,6 +1,5 @@
 ﻿using System;
 using GildedRose.Interfaces;
-using GildedRose.ItemFactories;
 
 namespace GildedRose.InventoryPipelineProcessing
 {
@@ -21,7 +20,7 @@ namespace GildedRose.InventoryPipelineProcessing
         public ItemProcessor(IQualityPipelineFactory qualityFactory, IShelfLifeAlgorithmFactory shelfLifeFactory)
         {
             _qualityFactory = qualityFactory ?? throw new ArgumentNullException( nameof( qualityFactory ));
-            _shelfLifeFactory = shelfLifeFactory  ?? throw new ArgumentNullException( nameof( shelfLifeFactory ));;
+            _shelfLifeFactory = shelfLifeFactory  ?? throw new ArgumentNullException( nameof( shelfLifeFactory ));
         }
         
         /// <summary>

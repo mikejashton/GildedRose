@@ -51,9 +51,6 @@ namespace GildedRose_Tests.InventoryPipelineProcessing
         [TestMethod]
         public void Failure_ThrowsErrorOnAllElementsNullInConstructor()
         {
-            // Setup
-            var qualityFactory = new Mock<IQualityPipelineFactory>();
-            
             // Execution
             Assert.ThrowsException<ArgumentNullException>( () => new ItemProcessor(null, null ));
         }

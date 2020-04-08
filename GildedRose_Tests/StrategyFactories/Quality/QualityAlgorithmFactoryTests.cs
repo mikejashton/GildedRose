@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using GildedRose;
 using GildedRose.Exceptions;
 using GildedRose.Interfaces;
 using GildedRose.StrategyFactories.Quality;

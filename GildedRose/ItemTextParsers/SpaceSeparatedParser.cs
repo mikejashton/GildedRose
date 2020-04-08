@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text;
 using GildedRose.Interfaces;
 
 namespace GildedRose.ItemTextParsers

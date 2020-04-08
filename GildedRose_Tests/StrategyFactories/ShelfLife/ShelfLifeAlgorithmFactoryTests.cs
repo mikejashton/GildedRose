@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using GildedRose.Exceptions;
 using GildedRose.Interfaces;
-using GildedRose.StrategyFactories.Quality;
 using GildedRose.StrategyFactories.ShelfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
