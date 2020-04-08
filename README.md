@@ -1,5 +1,5 @@
 ﻿# About GildedRose
-This program automates the inventory management process. It accepts an properly formatted input file and outputs  
+This program automates the inventory management process. It accepts a properly formatted input file and outputs  
 an adjusted inventory to another (output) file. The input file must be formatted according to these rules:  
 
 1. The file must have one inventory item per line
