@@ -10,15 +10,15 @@ namespace GildedRose.StrategyFactories.ShelfLife
     /// </summary>
     internal class ShelfLifeAlgorithmFactory : IShelfLifeAlgorithmFactory
     {
-        private readonly GenericFactory<SellByStrategy, IShelfLifeAlgorithm> _genericFactory;
+        private readonly GenericFactory<ShelfLifeStrategy, IShelfLifeAlgorithm> _genericFactory;
         
         /// <summary>
         /// Initialises the factory with a lookup list
         /// </summary>
         /// <param name="typeMap">The lookup list</param>
-        public ShelfLifeAlgorithmFactory(IDictionary<SellByStrategy, Type> typeMap)
+        public ShelfLifeAlgorithmFactory(IDictionary<ShelfLifeStrategy, Type> typeMap)
         {
-            _genericFactory = new GenericFactory<SellByStrategy, IShelfLifeAlgorithm>( typeMap );
+            _genericFactory = new GenericFactory<ShelfLifeStrategy, IShelfLifeAlgorithm>( typeMap );
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace GildedRose.StrategyFactories.ShelfLife
         /// <exception cref="GildedRoseException">Indicates that the lookup list that was provided in the constructor
         /// was invalid</exception>
         /// <returns>The quality algorithm</returns>
-        public IShelfLifeAlgorithm Create(SellByStrategy strategyType)
+        public IShelfLifeAlgorithm Create(ShelfLifeStrategy strategyType)
         {
             try
             {

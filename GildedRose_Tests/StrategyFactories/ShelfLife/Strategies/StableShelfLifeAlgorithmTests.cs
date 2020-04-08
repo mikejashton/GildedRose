@@ -16,7 +16,7 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife.Strategies
         {
             // Setup
             const int sellIn = 2;
-            var item = new Item( "Name", sellIn, 5, QualityStrategy.LinearDecrease, SellByStrategy.Stable );
+            var item = new Item( "Name", sellIn, 5, QualityStrategy.LinearDecrease, ShelfLifeStrategy.Stable );
             var algorithm = new StableShelfLifeAlgorithm();
             
             // Execution

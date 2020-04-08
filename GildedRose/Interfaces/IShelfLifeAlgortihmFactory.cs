@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="strategyType">The strategy type</param>
         /// <returns>The algorithm</returns>
-        IShelfLifeAlgorithm Create(SellByStrategy strategyType);
+        IShelfLifeAlgorithm Create(ShelfLifeStrategy strategyType);
     }
 }

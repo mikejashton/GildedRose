@@ -15,14 +15,14 @@ namespace GildedRose_Tests
         {
             // Setup
             var newItem = new Item( "Some Stock Item", -3, 4, 
-                QualityStrategy.LinearDecrease, SellByStrategy.LinearDecrease) as IInventoryItem;
+                QualityStrategy.LinearDecrease, ShelfLifeStrategy.LinearDecrease) as IInventoryItem;
 
             //  Assert
             Assert.AreEqual("Some Stock Item", newItem.Name);
             Assert.AreEqual(4, newItem.Quality);
             Assert.AreEqual(-3, newItem.SellIn);
             Assert.AreEqual( QualityStrategy.LinearDecrease, newItem.QualityStrategy );
-            Assert.AreEqual( SellByStrategy.LinearDecrease, newItem.SellByStrategy );
+            Assert.AreEqual( ShelfLifeStrategy.LinearDecrease, newItem.ShelfLifeStrategy );
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace GildedRose_Tests
         {
             // Setup
             var newItem = new Item( "Some Stock Item", -3, 4, 
-                QualityStrategy.RapidDecrease, SellByStrategy.Stable) as IInventoryItem;
+                QualityStrategy.RapidDecrease, ShelfLifeStrategy.Stable) as IInventoryItem;
             var qualityMaintainer = (IQualityMaintenance)newItem;
             
             // Execution
@@ -46,7 +46,7 @@ namespace GildedRose_Tests
             Assert.AreEqual(109, newItem.Quality);
             Assert.AreEqual(-3, newItem.SellIn);
             Assert.AreEqual( QualityStrategy.RapidDecrease, newItem.QualityStrategy );
-            Assert.AreEqual( SellByStrategy.Stable, newItem.SellByStrategy );
+            Assert.AreEqual( ShelfLifeStrategy.Stable, newItem.ShelfLifeStrategy );
         }
         
         /// <summary>
@@ -58,7 +58,7 @@ namespace GildedRose_Tests
         {
             // Setup
             var newItem = new Item( "Some Stock Item", -3, 4, 
-                QualityStrategy.LinearDecrease, SellByStrategy.LinearDecrease) as IInventoryItem;
+                QualityStrategy.LinearDecrease, ShelfLifeStrategy.LinearDecrease) as IInventoryItem;
             var qualityMaintainer = (IShelfLifeMaintenance)newItem;
             
             // Execution
@@ -70,7 +70,7 @@ namespace GildedRose_Tests
             Assert.AreEqual(4, newItem.Quality);
             Assert.AreEqual(33, newItem.SellIn);
             Assert.AreEqual( QualityStrategy.LinearDecrease, newItem.QualityStrategy );
-            Assert.AreEqual( SellByStrategy.LinearDecrease, newItem.SellByStrategy );
+            Assert.AreEqual( ShelfLifeStrategy.LinearDecrease, newItem.ShelfLifeStrategy );
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             var algorithm = new QualityNeverAboveThresholdAlgorithm(maxThreshold);
             for (var qualityScore = 0; qualityScore <= maxThreshold; qualityScore++)
             {
-                var item = new Item("Name", 1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable);
+                var item = new Item("Name", 1, qualityScore, QualityStrategy.LinearDecrease, ShelfLifeStrategy.Stable);
 
                 // Execution
                 algorithm.Run(item, item);
@@ -39,7 +39,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
             // Setup
             const int qualityScore = 51;
             const int maxThreshold = 50;
-            var item = new Item("Name", 1, qualityScore, QualityStrategy.LinearDecrease, SellByStrategy.Stable);
+            var item = new Item("Name", 1, qualityScore, QualityStrategy.LinearDecrease, ShelfLifeStrategy.Stable);
             var algorithm = new QualityNeverAboveThresholdAlgorithm(maxThreshold);
 
             // Execution

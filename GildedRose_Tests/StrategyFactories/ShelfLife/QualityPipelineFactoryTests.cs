@@ -51,7 +51,7 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         public void Failure_FactoryThrowsArgumentException()
         {
             // Setup
-            var item = new Item( "NewItem", 1, 3, QualityStrategy.Stable, SellByStrategy.Stable);
+            var item = new Item( "NewItem", 1, 3, QualityStrategy.Stable, ShelfLifeStrategy.Stable);
             var qualityFactoryMock = new Mock<IQualityAlgorithmFactory>();
             qualityFactoryMock.Setup(f => f.Create(It.IsAny<QualityStrategy>()))
                 .Throws(new ArgumentException());
@@ -66,7 +66,7 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         public void Failure_FactoryThrowsGildedRoseException()
         {
             // Setup
-            var item = new Item( "NewItem", 1, 3, QualityStrategy.Stable, SellByStrategy.Stable);
+            var item = new Item( "NewItem", 1, 3, QualityStrategy.Stable, ShelfLifeStrategy.Stable);
             var qualityFactoryMock = new Mock<IQualityAlgorithmFactory>();
             var expectedException = new GildedRoseException();
             qualityFactoryMock.Setup(f => f.Create(It.IsAny<QualityStrategy>()))
@@ -84,7 +84,7 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         {
             // Setup
             var qualityStrategyExpected = QualityStrategy.Stable;
-            var item = new Item( "NewItem", 1, 3, qualityStrategyExpected, SellByStrategy.Stable);
+            var item = new Item( "NewItem", 1, 3, qualityStrategyExpected, ShelfLifeStrategy.Stable);
             var qualityFactoryMock = new Mock<IQualityAlgorithmFactory>(MockBehavior.Strict);
             
             // Create a mock that expects the sort of strategy that is represented in the item above
@@ -108,7 +108,7 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         {
             // Setup
             var qualityStrategyExpected = QualityStrategy.LinearIncrease;
-            var item = new Item( "NewItem", 1, 3, qualityStrategyExpected, SellByStrategy.Stable);
+            var item = new Item( "NewItem", 1, 3, qualityStrategyExpected, ShelfLifeStrategy.Stable);
             var qualityFactoryMock = new Mock<IQualityAlgorithmFactory>(MockBehavior.Strict);
             var qcList = new List<IQualityAlgorithm>()
             {

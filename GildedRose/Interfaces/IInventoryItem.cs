@@ -34,7 +34,7 @@
     /// <summary>
     /// Represents the sell-by strategy to be applied 
     /// </summary>
-    public enum SellByStrategy
+    public enum ShelfLifeStrategy
     {
         /// <summary>
         /// Maintains a constant value 
@@ -65,7 +65,7 @@
         /// <summary>
         /// The sell by strategy applied to the item 
         /// </summary>
-        SellByStrategy SellByStrategy { get;  }
+        ShelfLifeStrategy ShelfLifeStrategy { get;  }
         
         /// <summary>
         /// A measure of the quality of the item. This value may change as the item ages

@@ -27,10 +27,10 @@ namespace GildedRose
             });
             
             // Creates a mapping between the shelf life strategy and the implementation.
-            var shelfLifeAlgorithmFactory = new ShelfLifeAlgorithmFactory( new Dictionary<SellByStrategy, Type>()
+            var shelfLifeAlgorithmFactory = new ShelfLifeAlgorithmFactory( new Dictionary<ShelfLifeStrategy, Type>()
             {
-                { SellByStrategy.Stable, typeof( StableShelfLifeAlgorithm ) },
-                { SellByStrategy.LinearDecrease, typeof( LinearDecreaseShelfLifeAlgorithm ) }
+                { ShelfLifeStrategy.Stable, typeof( StableShelfLifeAlgorithm ) },
+                { ShelfLifeStrategy.LinearDecrease, typeof( LinearDecreaseShelfLifeAlgorithm ) }
             });
             
             // Creates a mapping between an item of stock and it's corresponding stock management strategy. At the
@@ -38,11 +38,11 @@ namespace GildedRose
             // contain other definitions in future.
             var itemFactory = new ItemFactory( new Dictionary<string, StockManagementStrategy>()
             {
-                { "Aged Brie", new StockManagementStrategy( QualityStrategy.LinearIncrease, SellByStrategy.LinearDecrease )},
-                { "Backstage passes", new StockManagementStrategy( QualityStrategy.IncreasingUntilSellBy, SellByStrategy.LinearDecrease )}, 
-                { "Sulfuras", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable )},
-                { "Normal Item", new StockManagementStrategy( QualityStrategy.LinearDecrease, SellByStrategy.LinearDecrease )},
-                { "Conjured", new StockManagementStrategy( QualityStrategy.RapidDecrease, SellByStrategy.LinearDecrease )}
+                { "Aged Brie", new StockManagementStrategy( QualityStrategy.LinearIncrease, ShelfLifeStrategy.LinearDecrease )},
+                { "Backstage passes", new StockManagementStrategy( QualityStrategy.IncreasingUntilSellBy, ShelfLifeStrategy.LinearDecrease )}, 
+                { "Sulfuras", new StockManagementStrategy( QualityStrategy.Stable, ShelfLifeStrategy.Stable )},
+                { "Normal Item", new StockManagementStrategy( QualityStrategy.LinearDecrease, ShelfLifeStrategy.LinearDecrease )},
+                { "Conjured", new StockManagementStrategy( QualityStrategy.RapidDecrease, ShelfLifeStrategy.LinearDecrease )}
             });
             
             // Create the list of items (this will ultimately be done in a stream)
@@ -79,7 +79,7 @@ namespace GildedRose
                 try
                 {
                     // Run the algorithm against the stock life first
-                    var stockPipeline = shelfLifeAlgorithmFactory.Create(item.SellByStrategy);
+                    var stockPipeline = shelfLifeAlgorithmFactory.Create(item.ShelfLifeStrategy);
                     stockPipeline.Run(item, item as IShelfLifeMaintenance);
 
                     // Now run the algorithm against the quality metric

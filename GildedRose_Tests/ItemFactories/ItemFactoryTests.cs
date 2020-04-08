@@ -28,11 +28,11 @@ namespace GildedRose_Tests.ItemFactories
             const int sellIn = 99;
             const int quality = 66;
             const QualityStrategy expectedQualityStrategy = QualityStrategy.LinearDecrease;
-            const SellByStrategy expectedSellByStrategy = SellByStrategy.LinearDecrease;
+            const ShelfLifeStrategy expectedSellByStrategy = ShelfLifeStrategy.LinearDecrease;
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "Some Other object", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) },
-                { "Yet another object", new StockManagementStrategy( QualityStrategy.RapidDecrease, SellByStrategy.LinearDecrease) },
+                { "Some Other object", new StockManagementStrategy( QualityStrategy.Stable, ShelfLifeStrategy.Stable) },
+                { "Yet another object", new StockManagementStrategy( QualityStrategy.RapidDecrease, ShelfLifeStrategy.LinearDecrease) },
                 { objectName, new StockManagementStrategy( expectedQualityStrategy, expectedSellByStrategy) }, 
             }) ;
 
@@ -45,7 +45,7 @@ namespace GildedRose_Tests.ItemFactories
             Assert.AreEqual(sellIn, newItem.SellIn);
             Assert.AreEqual(quality, newItem.Quality);
             Assert.AreEqual( expectedQualityStrategy, newItem.QualityStrategy );
-            Assert.AreEqual( expectedSellByStrategy, newItem.SellByStrategy );
+            Assert.AreEqual( expectedSellByStrategy, newItem.ShelfLifeStrategy );
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace GildedRose_Tests.ItemFactories
             // Setup
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "SomeObject", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) }, 
+                { "SomeObject", new StockManagementStrategy( QualityStrategy.Stable, ShelfLifeStrategy.Stable) }, 
             }) ;
             
             // Execution
@@ -72,7 +72,7 @@ namespace GildedRose_Tests.ItemFactories
             // Setup
             var factory = new ItemFactory(new Dictionary<string, StockManagementStrategy>()
             {
-                { "This is a valid object", new StockManagementStrategy( QualityStrategy.Stable, SellByStrategy.Stable) }, 
+                { "This is a valid object", new StockManagementStrategy( QualityStrategy.Stable, ShelfLifeStrategy.Stable) }, 
             }) ;
             
             // Execution

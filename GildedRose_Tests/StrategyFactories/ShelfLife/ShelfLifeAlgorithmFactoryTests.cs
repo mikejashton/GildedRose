@@ -32,14 +32,14 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         public void Success_ShelfLifeAlgorithmCreated()
         {
             // Setup
-            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<SellByStrategy, Type>()
+            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<ShelfLifeStrategy, Type>()
             {
-                { SellByStrategy.Stable, typeof( TestAlgorithm1 ) },
-                { SellByStrategy.LinearDecrease, typeof( TestAlgorithm2 ) }
+                { ShelfLifeStrategy.Stable, typeof( TestAlgorithm1 ) },
+                { ShelfLifeStrategy.LinearDecrease, typeof( TestAlgorithm2 ) }
             });
             
             // Execution
-            var result = factory.Create(SellByStrategy.LinearDecrease);
+            var result = factory.Create(ShelfLifeStrategy.LinearDecrease);
             
             // Assert
             Assert.IsNotNull( result );
@@ -53,13 +53,13 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         public void Failure_LookupDoesNotContainKey()
         {
             // Setup
-            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<SellByStrategy, Type>()
+            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<ShelfLifeStrategy, Type>()
             {
-                { SellByStrategy.LinearDecrease, typeof( TestAlgorithm2 ) }
+                { ShelfLifeStrategy.LinearDecrease, typeof( TestAlgorithm2 ) }
             });
             
             // Execution and assert
-            Assert.ThrowsException<ArgumentException>(() => factory.Create(SellByStrategy.Stable));
+            Assert.ThrowsException<ArgumentException>(() => factory.Create(ShelfLifeStrategy.Stable));
         }
         
         /// <summary>
@@ -69,15 +69,15 @@ namespace GildedRose_Tests.StrategyFactories.ShelfLife
         public void Failure_LookupContainsWrongType()
         {
             // Setup
-            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<SellByStrategy, Type>()
+            var factory = new ShelfLifeAlgorithmFactory( new Dictionary<ShelfLifeStrategy, Type>()
             {
-                { SellByStrategy.LinearDecrease, typeof( TestAlgorithm2 ) },
-                { SellByStrategy.Stable, typeof( List<int> ) }
+                { ShelfLifeStrategy.LinearDecrease, typeof( TestAlgorithm2 ) },
+                { ShelfLifeStrategy.Stable, typeof( List<int> ) }
             });
             
             // Execution and assert
-            var exception = Assert.ThrowsException<GildedRoseException>(() => factory.Create(SellByStrategy.Stable));
-            Assert.AreEqual( $"The lookup list item relating to '{SellByStrategy.Stable}' was not compatible" +
+            var exception = Assert.ThrowsException<GildedRoseException>(() => factory.Create(ShelfLifeStrategy.Stable));
+            Assert.AreEqual( $"The lookup list item relating to '{ShelfLifeStrategy.Stable}' was not compatible" +
                              $"with the IShelfLifeAlgorithm return type.", exception.Message );
         }
     }

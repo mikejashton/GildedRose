@@ -16,7 +16,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 99;
-            var item = new Item( "Name", 1, qualityScore, QualityStrategy.Stable, SellByStrategy.Stable );
+            var item = new Item( "Name", 1, qualityScore, QualityStrategy.Stable, ShelfLifeStrategy.Stable );
             var algorithm = new LinearIncreaseAlgorithm();
             
             // Execution
@@ -34,7 +34,7 @@ namespace GildedRose_Tests.StrategyFactories.Quality.Strategies
         {
             // Setup
             const int qualityScore = 0;
-            var item = new Item( "Name", 1, qualityScore, QualityStrategy.Stable, SellByStrategy.Stable );
+            var item = new Item( "Name", 1, qualityScore, QualityStrategy.Stable, ShelfLifeStrategy.Stable );
             var algorithm = new LinearIncreaseAlgorithm();
             
             // Execution
