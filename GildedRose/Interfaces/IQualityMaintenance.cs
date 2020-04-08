@@ -1,4 +1,4 @@
-﻿namespace GildedRose
+﻿namespace GildedRose.Interfaces
 {
     /// <summary>
     /// Provides write access to an entity's quality score
